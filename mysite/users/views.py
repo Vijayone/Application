@@ -4,3 +4,8 @@ from django.shortcuts import render
 def Register(request):
 	data ={}
 	return render(request,'register.html',data)
+
+
+def Login(request):
+	data={}
+	return render(request,'login.html',data)
