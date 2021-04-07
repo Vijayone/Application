@@ -9,7 +9,8 @@
 	<div class="col-md-4 col-sm-4 col-xs-12">
 		<div class="card px-4 mt-3">
 			<h4 class="text-center text-primary mt-2">User-Register</h4>
-			<form action="" method="POST">
+			<form action="/registeruser/" method="POST">
+				{% csrf_token %}
 				<div class="form-group">
 					<label for="for-username">Username</label>
 					<input type="text" class="form-control" name="username" >
