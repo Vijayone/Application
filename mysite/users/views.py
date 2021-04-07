@@ -38,9 +38,16 @@ def Login(request):
 				login(request, login_user)
 				messages.success(request,'login successfully')
 				return redirect('/')
+			else:
+				messages.error(request,'login failed')
+				return redirect('/login')
 
 	except Exception as e:
 		messages.error(request,"oop!, current user is logged successfully")
 		return redirect('/login')
 
 	return render(request,'login.html',data)
+
+def Logout(request):
+	logout(request)
+	return redirect('/')
