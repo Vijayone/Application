@@ -4,7 +4,11 @@ from django.contrib import messages
 from users.models import User
 # Create your views here.
 def Employe(request):
-	data = {}
+	employee_data = Emloyee.objects.all()
+	data = {
+	'employee_data':employee_data
+
+	}
 	return render(request, 'employeeinfo.html', data)
 
 def EmployeAdd(request):
@@ -25,7 +29,7 @@ def EmployeAdd(request):
 				is_employee = True
 				)
 			employee_user.save()
-			messages.success(request,"%s is successfully as employee added" %(user_detail.username))
+			messages.success(request," successfully as employee added")
 			return redirect('/employeeinfo')
 	except Exception as e:
 		messages.error(request, e)
