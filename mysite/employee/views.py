@@ -16,7 +16,8 @@ def EmployeAdd(request):
 	user_detail = User.objects.all()
 	data ={
 	 'user' : user,
-	 'user_detail': user_detail
+	 'user_detail': user_detail,
+
 	}
 	try:
 		if request.method == 'POST':
@@ -31,6 +32,11 @@ def EmployeAdd(request):
 			employee_user.save()
 			messages.success(request," successfully as employee added")
 			return redirect('/employeeinfo')
+			# for update 
+		if 'id' in request.GET:
+			data['employe_detail'] = Employe.objects.get(id=request.GET['id'])
+			return render(request,'addemployee.html',data)
+
 	except Exception as e:
 		messages.error(request, e)
 		return redirect('/addemployee')
